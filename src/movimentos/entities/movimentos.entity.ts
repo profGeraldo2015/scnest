@@ -1,29 +1,33 @@
-//mudar esta entity para a da tabela movimentos para poder usar com o sc2022(php)
+//ok, funcionando!!! mudar esta entity para a da tabela movimentos para poder usar com o sc2022(php)
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Movimento {
+export class Movimentos {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 8 })
-  credito: string;
+  CT_CREDITO: string;
  
   @Column({ length: 8 })
-  debito: string;
+  CT_DEBITO: string;
 
   @Column({ length: 50})
-  hist: string;
+  HIST: string;
 
   @Column({ length: 50})
-  obs: string;
+  OBS: string;
 
   @Column()
-  dt_emissao: Date;
+  DT_EMISSAO: Date;
 
   @Column()
-  dt_vencto: Date;
+  DT_VENCTO: Date;
 
   @Column( { type: 'decimal', precision: 17, scale: 2 })  
-  valor: number;
+  VALOR10: number;
+
+  @Column({ length: 255})
+  LINHA: string;
+
 }

@@ -3,12 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PlanoModule } from './plano/plano.module';
 import { MovimentoModule } from './movimento/movimento.module';
+import { MovimentosModule } from './movimentos/movimentos.module';
 
 
 @Module({
   imports: [
   PlanoModule,
-  MovimentoModule
+  MovimentoModule,
+  MovimentosModule
   ],
   controllers: [AppController],
   providers: [AppService],

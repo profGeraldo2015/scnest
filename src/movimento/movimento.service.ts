@@ -66,13 +66,13 @@ export class MovimentoService {
     .then((result)=>{
       return <ResultadoDto>{
           status: true,
-          mensagem: "Alterado com sucesso historico"
+          mensagem: "Historico alterado com sucesso!!!"
         }
     })
     .catch((error)=>{
       return <ResultadoDto>{
           status: false,
-          mensagem: "Erro...historico"
+          mensagem: "Erro na alteracao do historico..."
         }
     })
     }
