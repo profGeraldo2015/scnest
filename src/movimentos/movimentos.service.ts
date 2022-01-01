@@ -38,6 +38,7 @@ export class MovimentosService {
 
   async update(id: number, updateMovimentoDto: UpdateMovimentoDto):Promise<ResultadoDto> {
     //return `This action updates a #${id} movimento`;
+    console.log(updateMovimentoDto);
     return this.movimentosRepository.update( { id }, updateMovimentoDto)
     .then((result)=>{
       return <ResultadoDto>{
@@ -53,8 +54,32 @@ export class MovimentosService {
     })
   }
 
-  create(createMovimentoDto: CreateMovimentoDto) {
-    return 'This action adds a new movimento';
+  async create(data: CreateMovimentoDto):Promise<ResultadoDto> {
+
+    let movimento = new Movimentos()
+    movimento.CT_DEBITO = data.CT_DEBITO
+    movimento.CT_CREDITO = data.CT_CREDITO
+    movimento.HIST = data.HIST
+    movimento.OBS = data.OBS
+    movimento.DT_VENCTO = data.DT_VENCTO
+    movimento.DT_EMISSAO = data.DT_EMISSAO
+    movimento.VALOR10 = data.VALOR10
+    return this.movimentosRepository.save(movimento)
+    .then((result)=>{
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Gravado com sucesso!!!"
+      }
+    })
+    .catch((error)=>{
+      return <ResultadoDto>{
+        status: false,
+        mensagem: "Erro ao cadastrar..."
+      }
+    })
+
+
+    //return 'This action adds a new movimento';
   }
 
 
