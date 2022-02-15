@@ -5,26 +5,26 @@ import { Type  }  from 'class-transformer';
 
 export class UpdateMovimentoDto extends PartialType(CreateMovimentoDto) {
     
-    @IsString()
+    //@IsString()
 	CT_DEBITO: string;
     
-    @IsString()
+    //@IsString()
     CT_CREDITO: string;
     
-    @IsString()
+    //@IsString()
     HIST?: string;
     
-    @IsString()
+    //@IsString()
     OBS?: string;
     
-    @IsDate()
+    //@IsDate()
     DT_VENCTO: Date;
 
-    @IsDate()
+    //@IsDate()
     DT_EMISSAO: Date;
     
-    @Type(()=>Number)
-    @IsNumber()
+    //@Type(()=>Number)
+    //@IsNumber()
     VALOR10: number;
 
 }

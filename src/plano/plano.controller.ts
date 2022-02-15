@@ -17,6 +17,11 @@ export class PlanoController {
       return this.planoService.listar()
   }
 
+  @Get('listardesc')
+  async listardesc(): Promise<Plano[]>{
+      return this.planoService.listardesc()
+  }
+
   @Post('cadastrar')
   async cadastrar(@Body() data: PlanoCadastrarDto): Promise<ResultadoDto>{
     return this.planoService.cadastrar(data)

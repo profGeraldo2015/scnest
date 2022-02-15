@@ -18,10 +18,10 @@ export class MovimentosController {
   async listar(): Promise<Movimentos[]> {
     return this.movimentosService.listar();
   }
-
+ 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.movimentosService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.movimentosService.findOne(id);
   }
 
   @Patch(':id')
@@ -33,9 +33,10 @@ export class MovimentosController {
   alterarHist(@Param('id') id: number, @Body() movimentosAtualizarHistDto: MovimentosAtualizarHistDto) {
     return this.movimentosService.alterarHist(id, movimentosAtualizarHistDto);
   }
-
+  
+//ainda não implementada
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.movimentosService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.movimentosService.remove(id);
   }
 }

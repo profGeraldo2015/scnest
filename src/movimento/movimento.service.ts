@@ -14,8 +14,26 @@ export class MovimentoService {
     private movimentoRepository: Repository<Movimento>,
   ) {}
 
+
+  async listarOrder(reg:number): Promise<Movimento[]> {
+    //return this.movimentoRepository.find({order: {dt_vencto: "DESC"}});
+    return this.movimentoRepository.query('SELECT * FROM movimento ORDER BY dt_vencto,id ASC LIMIT '+reg);    
+    
+    //return this.movimentoRepository.find();
+  }
+  async listarData(reg:Date): Promise<Movimento[]> {
+    //return this.movimentoRepository.find({order: {dt_vencto: "DESC"}});
+    console.log(reg);
+    let sql = 'SELECT * FROM movimento WHERE dt_vencto = "'+reg+'" ORDER BY dt_vencto';
+    return this.movimentoRepository.query(sql);    
+    
+    //return this.movimentoRepository.find();
+  }
+    
+
   async listar(): Promise<Movimento[]> {
-    return this.movimentoRepository.find();
+
+    return this.movimentoRepository.query('SELECT * FROM movimento ORDER BY dt_vencto,id DESC LIMIT 5');
   }
   
   async cadastrar(data: MovimentoCadastrarDto):Promise<ResultadoDto>{
@@ -77,8 +95,6 @@ export class MovimentoService {
     })
     }
   
-
-
   findOne(id: number): Promise<Movimento> {
     return this.movimentoRepository.findOne(id);
   }

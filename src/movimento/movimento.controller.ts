@@ -20,6 +20,16 @@ export class MovimentoController {
   async listar(): Promise<Movimento[]>{
       return this.movimentoService.listar()
   }
+  
+ @Get('listarOrder/:reg')
+  async listarOrder(@Param('reg') reg: number): Promise<Movimento[]> {
+    return this.movimentoService.listarOrder(reg);
+  }
+  
+ @Get('listarData/:reg')
+  async listarData(@Param('reg') reg: Date): Promise<Movimento[]> {
+    return this.movimentoService.listarData(reg);
+  }
 
   @Post('cadastrar')
   async cadastrar(@Body() data: MovimentoCadastrarDto): Promise<ResultadoDto>{

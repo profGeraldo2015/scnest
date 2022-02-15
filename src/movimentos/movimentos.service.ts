@@ -88,9 +88,11 @@ export class MovimentosService {
     return `This action returns all movimentos`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} movimento`;
+  
+  findOne(id: number): Promise<Movimentos> {
+    return this.movimentosRepository.findOne(id);
   }
+
   remove(id: number) {
     return `This action removes a #${id} movimento`;
   }
